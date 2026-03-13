@@ -4,418 +4,374 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mediatekformation — AHOUZI Ilyes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0d0d0d;
-      --surface: #161616;
-      --border: #2a2a2a;
-      --accent: #00e5ff;
-      --text: #f0f0f0;
-      --muted: #888;
+      --bg: #f8f6f1;
+      --surface: #ffffff;
+      --surface2: #f0ede6;
+      --border: #e2ddd6;
+      --accent: #c84b2f;
+      --accent2: #1a1a2e;
+      --text: #1a1a1e;
+      --muted: #6b6660;
+      --tag-bg: #f0ede6;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 1.2rem 3rem;
+      padding: 1.2rem 4rem;
+      background: rgba(248,246,241,0.92);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
-      background: rgba(13,13,13,0.9);
-      backdrop-filter: blur(12px);
       z-index: 100;
     }
-    .nav-logo {
-      font-family: 'Space Mono', monospace;
-      font-size: 1rem;
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .nav-back {
-      color: var(--muted); text-decoration: none;
-      font-size: 0.9rem; transition: color 0.2s;
-    }
-    .nav-back:hover { color: var(--text); }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--accent2); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
 
     .hero {
-      padding: 10rem 2rem 5rem;
-      max-width: 900px;
-      margin: 0 auto;
+      padding: 9rem 4rem 5rem;
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
     }
     .hero-tag {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--accent);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent);
+      background: rgba(200,75,47,0.08); padding: 0.4rem 0.9rem; border-radius: 20px; margin-bottom: 1.5rem;
     }
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 700;
-      margin-bottom: 1.2rem;
+      font-family: 'Syne', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 1.2rem; color: var(--accent2);
     }
-    .hero h1 span { color: var(--accent); }
-    .hero p {
-      color: var(--muted);
-      font-size: 1.1rem;
-      line-height: 1.8;
-      max-width: 700px;
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero-desc { color: var(--muted); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; }
+    .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.8rem 1.6rem; background: var(--accent); color: white;
+      font-weight: 500; font-size: 0.9rem; text-decoration: none; border-radius: 6px;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(200,75,47,0.25); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.8rem 1.6rem; background: transparent; color: var(--accent2);
+      font-weight: 500; font-size: 0.9rem; text-decoration: none;
+      border: 1.5px solid var(--border); border-radius: 6px; transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .info-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem; }
+    .info-card .ic-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .info-card .ic-value { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--accent2); }
 
-    .content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 2rem 6rem;
-    }
+    .page-content { max-width: 1100px; margin: 0 auto; padding: 0 4rem 6rem; }
+    .divider { height: 1px; background: var(--border); margin: 4rem 0; }
+    .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem; }
+    .section-num { font-family: 'Syne', sans-serif; font-size: 0.75rem; color: var(--accent); font-weight: 700; letter-spacing: 2px; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--accent2); letter-spacing: -0.3px; }
 
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin: 3rem 0;
-    }
-    .info-cell {
-      background: var(--surface);
-      padding: 1.5rem;
-    }
-    .info-cell .label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--accent);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-    .info-cell .value {
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
+    .context-text { color: var(--muted); font-size: 1rem; line-height: 1.8; max-width: 750px; margin-bottom: 1rem; }
+    .context-text a { color: var(--accent); text-decoration: none; }
+    .context-text a:hover { text-decoration: underline; }
 
-    .section-block {
-      margin-bottom: 3rem;
+    .tech-wrap { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .tech-pill {
+      font-size: 0.82rem; font-weight: 500; padding: 0.45rem 1rem;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 20px; color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
     }
-    .section-block h2 {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--accent);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 1.2rem;
-      padding-bottom: 0.8rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .section-block p {
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-    .section-block ul {
-      list-style: none;
-    }
-    .section-block ul li {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 1rem;
-      padding: 0.3rem 0;
-      padding-left: 1.2rem;
-      position: relative;
-    }
-    .section-block ul li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: 0.8rem;
-    }
+    .tech-pill:hover { border-color: var(--accent); color: var(--accent); }
 
-    .tech-grid {
-      display: flex; flex-wrap: wrap; gap: 0.7rem;
+    .missions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+    .mission-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.8rem; transition: border-color 0.2s, transform 0.2s;
     }
-    .tech-badge {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--text);
-      background: var(--surface);
-    }
+    .mission-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .mission-card .mc-num { font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 0.8rem; }
+    .mission-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--accent2); margin-bottom: 0.6rem; }
+    .mission-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+    .mission-card ul { list-style: none; margin-top: 0.8rem; }
+    .mission-card ul li { font-size: 0.85rem; color: var(--muted); padding: 0.2rem 0 0.2rem 1rem; position: relative; }
+    .mission-card ul li::before { content: '·'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 
-    .links-grid {
-      display: flex; flex-direction: column; gap: 0.8rem;
+    .video-wrap {
+      border-radius: 12px; overflow: hidden; border: 1px solid var(--border);
+      position: relative; padding-bottom: 56.25%; height: 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
     }
-    .link-item {
-      display: flex; align-items: center;
-      padding: 1rem 1.2rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      text-decoration: none;
-      color: var(--text);
-      transition: border-color 0.2s;
-      gap: 1rem;
-    }
-    .link-item:hover { border-color: var(--accent); }
-    .link-item .link-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--accent);
-      min-width: 120px;
-    }
-    .link-item .link-url {
-      color: var(--muted);
-      font-size: 0.9rem;
-      word-break: break-all;
-    }
-    .link-arrow { color: var(--accent); margin-left: auto; }
+    .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-    .missions-list {
-      display: flex; flex-direction: column; gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+    .links-list { display: flex; flex-direction: column; gap: 0.8rem; }
+    .link-row {
+      display: flex; align-items: center; gap: 1.2rem;
+      padding: 1.1rem 1.4rem; background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; text-decoration: none; color: var(--text);
+      transition: border-color 0.2s, transform 0.15s;
     }
-    .mission-item {
-      background: var(--surface);
-      padding: 1.5rem;
-      display: flex; gap: 1.5rem; align-items: flex-start;
-    }
-    .mission-num {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--accent);
-      min-width: 70px;
-    }
-    .mission-content h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-    .mission-content p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
+    .link-row:hover { border-color: var(--accent); transform: translateX(4px); }
+    .link-icon { width: 36px; height: 36px; background: var(--tag-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .link-info { flex: 1; }
+    .link-info strong { display: block; font-size: 0.9rem; color: var(--accent2); }
+    .link-info span { font-size: 0.8rem; color: var(--muted); }
+    .link-chevron { color: var(--accent); font-size: 1rem; }
 
-    .competences-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+    .comp-blocs { display: flex; flex-direction: column; gap: 2.5rem; }
+    .comp-bloc-title {
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--accent2);
+      margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem;
     }
+    .comp-bloc-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.8rem; }
     .comp-item {
-      background: var(--surface);
-      padding: 1rem 1.2rem;
-      font-size: 0.9rem;
-      color: var(--muted);
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem;
     }
-    .comp-item span {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-
-    .video-placeholder {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 3rem;
-      text-align: center;
-      color: var(--muted);
-    }
-    .video-placeholder p { font-size: 0.95rem; }
+    .comp-item .ci-cat { font-size: 0.7rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+    .comp-item .ci-text { font-size: 0.88rem; color: var(--text); line-height: 1.5; }
 
     footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 3rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.85rem;
+      border-top: 1px solid var(--border); padding: 2rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      color: var(--muted); font-size: 0.82rem; background: var(--surface);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2rem; }
+      .page-content { padding: 0 1.5rem 4rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
 </head>
 <body>
+
   <nav>
-    <a href="index.html" class="nav-logo">AHOUZI.dev</a>
-    <a href="index.html" class="nav-back">← Retour</a>
+    <a href="index.html" class="nav-logo">AHOUZI<span>.</span>dev</a>
+    <a href="index.html" class="nav-back">← Retour au portfolio</a>
   </nav>
 
   <div class="hero">
-    <div class="hero-tag">Atelier professionnel — E6</div>
-    <h1><span>Mediatek</span>formation</h1>
-    <p>Application web de vidéos d'auto-formation développée avec Symfony 6.4. 
-       Ajout d'un back office d'administration, de tests PHPUnit et déploiement en ligne avec CI/CD.</p>
+    <div class="hero-left">
+      <div class="hero-tag">Atelier professionnel — E6</div>
+      <h1><em>Mediatek</em><br>formation</h1>
+      <p class="hero-desc">Application web de vidéos d'auto-formation développée avec Symfony 6.4. Ajout d'un back office d'administration sécurisé, de tests PHPUnit et déploiement en ligne avec CI/CD.</p>
+      <div class="hero-links">
+        <a href="https://ilyesahouzi.alwaysdata.net" target="_blank" class="btn-primary">Voir le site ↗</a>
+        <a href="https://github.com/flut0/mediatekformation" target="_blank" class="btn-secondary">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="info-cards">
+        <div class="info-card"><div class="ic-label">Cadre</div><div class="ic-value">BTS SIO E6</div></div>
+        <div class="info-card"><div class="ic-label">Période</div><div class="ic-value">Fév — Mars 2026</div></div>
+        <div class="info-card"><div class="ic-label">Framework</div><div class="ic-value">Symfony 6.4</div></div>
+        <div class="info-card"><div class="ic-label">Tests</div><div class="ic-value">16 / 16 ✓</div></div>
+      </div>
+    </div>
   </div>
 
-  <div class="content">
+  <div class="page-content">
 
-    <!-- Infos rapides -->
-    <div class="info-grid">
-      <div class="info-cell">
-        <div class="label">Cadre</div>
-        <div class="value">Atelier professionnel BTS SIO E6</div>
+    <div class="divider"></div>
+
+    <div class="section-header"><span class="section-num">01</span><span class="section-title">Contexte</span></div>
+    <p class="context-text">Mediatekformation est une application web permettant d'accéder à des vidéos d'auto-formation proposées par une chaîne de médiathèques, également accessibles sur YouTube. Le projet d'origine, fourni par l'enseignant, ne comprenait qu'un front office basique. L'atelier consistait à améliorer et compléter l'application en 4 missions.</p>
+    <p class="context-text">Dépôt d'origine : <a href="https://github.com/CNED-SLAM/mediatekformation" target="_blank">github.com/CNED-SLAM/mediatekformation</a></p>
+
+    <div class="divider"></div>
+
+    <div class="section-header"><span class="section-num">02</span><span class="section-title">Langages & Technologies</span></div>
+    <div class="tech-wrap">
+      <span class="tech-pill">PHP 8.2</span><span class="tech-pill">Symfony 6.4</span>
+      <span class="tech-pill">Twig</span><span class="tech-pill">Doctrine ORM</span>
+      <span class="tech-pill">MySQL</span><span class="tech-pill">PHPUnit</span>
+      <span class="tech-pill">Bootstrap 5</span><span class="tech-pill">Git / GitHub</span>
+      <span class="tech-pill">GitHub Actions</span><span class="tech-pill">Alwaysdata</span>
+      <span class="tech-pill">SonarLint</span><span class="tech-pill">Composer</span>
+      <span class="tech-pill">FileZilla / SFTP</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-header"><span class="section-num">03</span><span class="section-title">Missions réalisées</span></div>
+    <div class="missions-grid">
+      <div class="mission-card">
+        <div class="mc-num">Mission 1</div>
+        <h3>Qualité du code</h3>
+        <p>Analyse et correction des problèmes détectés par SonarLint. Ajout d'une fonctionnalité de comptage.</p>
+        <ul>
+          <li>Remplacement des chaînes littérales par des constantes</li>
+          <li>Correction des blocs manquants et conditions imbriquées</li>
+          <li>Accessibilité : attributs alt et summary</li>
+          <li>Colonne "nb formations" avec tri dans les playlists</li>
+        </ul>
       </div>
-      <div class="info-cell">
-        <div class="label">Date</div>
-        <div class="value">Février — Mars 2026</div>
+      <div class="mission-card">
+        <div class="mc-num">Mission 2</div>
+        <h3>Back office admin</h3>
+        <p>Développement d'une interface d'administration complète avec authentification sécurisée.</p>
+        <ul>
+          <li>CRUD formations, playlists, catégories</li>
+          <li>Authentification Symfony Security (ROLE_ADMIN)</li>
+          <li>Redirection automatique vers /login</li>
+          <li>Règles métier : suppression conditionnelle</li>
+        </ul>
       </div>
-      <div class="info-cell">
-        <div class="label">Framework</div>
-        <div class="value">Symfony 6.4 / PHP 8.2</div>
+      <div class="mission-card">
+        <div class="mc-num">Mission 3</div>
+        <h3>Tests PHPUnit</h3>
+        <p>Suite de tests automatisés couvrant les différentes couches de l'application.</p>
+        <ul>
+          <li>Tests unitaires (entité Formation)</li>
+          <li>Tests de validation (contrainte date)</li>
+          <li>Tests d'intégration (Repository)</li>
+          <li>Tests fonctionnels (WebTestCase)</li>
+          <li>Résultat : OK (16 tests, 21 assertions)</li>
+        </ul>
       </div>
-      <div class="info-cell">
-        <div class="label">Hébergement</div>
-        <div class="value">Alwaysdata</div>
+      <div class="mission-card">
+        <div class="mc-num">Mission 4</div>
+        <h3>Déploiement & CI/CD</h3>
+        <p>Mise en production avec automatisation du déploiement et des sauvegardes.</p>
+        <ul>
+          <li>Déploiement sur Alwaysdata (SFTP + SSH)</li>
+          <li>Sauvegarde automatique BDD quotidienne à 02h00</li>
+          <li>GitHub Actions : déploiement continu sur push</li>
+        </ul>
       </div>
     </div>
 
-    <!-- Contexte -->
-    <div class="section-block">
-      <h2>Contexte</h2>
-      <p>Le projet Mediatekformation est une application web permettant d'accéder à des vidéos 
-         d'auto-formation proposées par une chaîne de médiathèques. Le projet d'origine, fourni 
-         par l'enseignant, ne contenait qu'un front office. L'atelier consistait à réaliser 4 missions 
-         pour améliorer et compléter l'application.</p>
-      <p>Dépôt d'origine : <a href="https://github.com/CNED-SLAM/mediatekformation" target="_blank" style="color:var(--accent)">github.com/CNED-SLAM/mediatekformation</a></p>
+    <div class="divider"></div>
+
+    <div class="section-header"><span class="section-num">04</span><span class="section-title">Vidéo de démonstration</span></div>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/7efUYRC1FKM" allowfullscreen></iframe>
     </div>
 
-    <!-- Technologies -->
-    <div class="section-block">
-      <h2>Langages et technologies</h2>
-      <div class="tech-grid">
-        <span class="tech-badge">PHP 8.2</span>
-        <span class="tech-badge">Symfony 6.4</span>
-        <span class="tech-badge">Twig</span>
-        <span class="tech-badge">Doctrine ORM</span>
-        <span class="tech-badge">MySQL</span>
-        <span class="tech-badge">PHPUnit</span>
-        <span class="tech-badge">Bootstrap 5</span>
-        <span class="tech-badge">Git / GitHub</span>
-        <span class="tech-badge">GitHub Actions</span>
-        <span class="tech-badge">Alwaysdata</span>
-        <span class="tech-badge">SonarLint</span>
-        <span class="tech-badge">Composer</span>
-      </div>
+    <div class="divider"></div>
+
+    <div class="section-header"><span class="section-num">05</span><span class="section-title">Liens</span></div>
+    <div class="links-list">
+      <a href="https://ilyesahouzi.alwaysdata.net" target="_blank" class="link-row">
+        <div class="link-icon">🌐</div>
+        <div class="link-info"><strong>Site en ligne</strong><span>ilyesahouzi.alwaysdata.net</span></div>
+        <span class="link-chevron">→</span>
+      </a>
+      <a href="https://github.com/flut0/mediatekformation" target="_blank" class="link-row">
+        <div class="link-icon">💻</div>
+        <div class="link-info"><strong>Dépôt GitHub</strong><span>github.com/flut0/mediatekformation</span></div>
+        <span class="link-chevron">→</span>
+      </a>
+      <a href="bilan_mediatekformation_v2.pdf" target="_blank" class="link-row">
+        <div class="link-icon">📄</div>
+        <div class="link-info"><strong>Compte rendu PDF</strong><span>Dossier de compte rendu complet des 4 missions</span></div>
+        <span class="link-chevron">→</span>
+      </a>
+      <a href="https://github.com/CNED-SLAM/mediatekformation" target="_blank" class="link-row">
+        <div class="link-icon">📁</div>
+        <div class="link-info"><strong>Dépôt d'origine</strong><span>github.com/CNED-SLAM/mediatekformation</span></div>
+        <span class="link-chevron">→</span>
+      </a>
     </div>
 
-    <!-- Missions -->
-    <div class="section-block">
-      <h2>Missions réalisées</h2>
-      <div class="missions-list">
-        <div class="mission-item">
-          <div class="mission-num">Mission 1</div>
-          <div class="mission-content">
-            <h3>Qualité du code et nouvelles fonctionnalités</h3>
-            <p>Corrections SonarLint (constantes, blocs manquants, accessibilité). 
-               Ajout d'un compteur de formations par playlist avec tri.</p>
+    <div class="divider"></div>
+
+    <div class="section-header"><span class="section-num">06</span><span class="section-title">Compétences couvertes</span></div>
+    <div class="comp-blocs">
+
+      <div>
+        <div class="comp-bloc-title">Bloc 1 — Services informatiques aux organisations</div>
+        <div class="comp-grid">
+          <div class="comp-item">
+            <div class="ci-cat">Patrimoine informatique</div>
+            <div class="ci-text">Mettre en place et vérifier les niveaux d'habilitation associés à un service</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Patrimoine informatique</div>
+            <div class="ci-text">Gérer des sauvegardes (backup automatique quotidien de la BDD)</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Assistance et évolution</div>
+            <div class="ci-text">Traiter des demandes concernant les applications</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Présence en ligne</div>
+            <div class="ci-text">Participer à l'évolution d'un site Web exploitant les données de l'organisation</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Mise à disposition</div>
+            <div class="ci-text">Déployer un service (mise en ligne sur Alwaysdata)</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Mise à disposition</div>
+            <div class="ci-text">Réaliser les tests d'intégration et d'acceptation d'un service</div>
           </div>
         </div>
-        <div class="mission-item">
-          <div class="mission-num">Mission 2</div>
-          <div class="mission-content">
-            <h3>Back office d'administration</h3>
-            <p>CRUD complet sur formations, playlists et catégories. 
-               Authentification sécurisée avec Symfony Security (ROLE_ADMIN).</p>
+      </div>
+
+      <div>
+        <div class="comp-bloc-title">Bloc 2 — Conception et développement d'applications</div>
+        <div class="comp-grid">
+          <div class="comp-item">
+            <div class="ci-cat">Conception applicative</div>
+            <div class="ci-text">Exploiter les ressources du cadre applicatif (Symfony 6.4)</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Conception applicative</div>
+            <div class="ci-text">Identifier, développer, utiliser ou adapter des composants logiciels</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Conception applicative</div>
+            <div class="ci-text">Utiliser des composants d'accès aux données (Doctrine ORM)</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Conception applicative</div>
+            <div class="ci-text">Intégrer en continu les versions d'une solution applicative (GitHub Actions CI/CD)</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Conception applicative</div>
+            <div class="ci-text">Réaliser les tests nécessaires à la validation ou à la mise en production</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Conception applicative</div>
+            <div class="ci-text">Rédiger des documentations technique et d'utilisation (PHPDoc, README, PDF bilan)</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Maintenance</div>
+            <div class="ci-text">Évaluer la qualité d'une solution applicative (SonarLint)</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Maintenance</div>
+            <div class="ci-text">Analyser et corriger un dysfonctionnement</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Gestion des données</div>
+            <div class="ci-text">Exploiter des données à l'aide d'un langage de requêtes (Doctrine DQL / SQL)</div>
+          </div>
+          <div class="comp-item">
+            <div class="ci-cat">Gestion des données</div>
+            <div class="ci-text">Administrer et déployer une base de données (MySQL, phpMyAdmin, Alwaysdata)</div>
           </div>
         </div>
-        <div class="mission-item">
-          <div class="mission-num">Mission 3</div>
-          <div class="mission-content">
-            <h3>Tests PHPUnit</h3>
-            <p>16 tests automatisés : unitaires, validation, intégration (Repository) 
-               et fonctionnels (WebTestCase). Résultat : OK (16 tests, 21 assertions).</p>
-          </div>
-        </div>
-        <div class="mission-item">
-          <div class="mission-num">Mission 4</div>
-          <div class="mission-content">
-            <h3>Déploiement et exploitation</h3>
-            <p>Déploiement sur Alwaysdata, sauvegarde automatique quotidienne de la BDD, 
-               déploiement continu via GitHub Actions.</p>
-          </div>
-        </div>
       </div>
-    </div>
 
-    <!-- Liens -->
-    <div class="section-block">
-      <h2>Liens</h2>
-      <div class="links-grid">
-        <a href="https://github.com/flut0/mediatekformation" target="_blank" class="link-item">
-          <span class="link-label">Dépôt GitHub</span>
-          <span class="link-url">github.com/flut0/mediatekformation</span>
-          <span class="link-arrow">→</span>
-        </a>
-        <a href="https://ilyesahouzi.alwaysdata.net" target="_blank" class="link-item">
-          <span class="link-label">Site en ligne</span>
-          <span class="link-url">ilyesahouzi.alwaysdata.net</span>
-          <span class="link-arrow">→</span>
-        </a>
-        <a href="bilan_mediatekformation_v2.pdf" target="_blank" class="link-item">
-          <span class="link-label">Compte rendu PDF</span>
-          <span class="link-url">Dossier de compte rendu complet</span>
-          <span class="link-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Vidéo -->
-    <div class="section-block">
-      <h2>Vidéo de démonstration</h2>
-      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid var(--border);border-radius:2px;">
-        <iframe
-          src="https://www.youtube.com/embed/7efUYRC1FKM"
-          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
-    <!-- Compétences -->
-    <div class="section-block">
-      <h2>Compétences couvertes (Bloc 2 — E6)</h2>
-      <div class="competences-list">
-        <div class="comp-item">
-          <span>B2.1</span>
-          Exploiter les ressources du cadre applicatif (Symfony)
-        </div>
-        <div class="comp-item">
-          <span>B2.2</span>
-          Développer des composants métier (CRUD, validation)
-        </div>
-        <div class="comp-item">
-          <span>B2.3</span>
-          Construire une application organisée (MVC)
-        </div>
-        <div class="comp-item">
-          <span>B2.4</span>
-          Sécuriser les accès (authentification, ROLE_ADMIN)
-        </div>
-        <div class="comp-item">
-          <span>B2.5</span>
-          Mettre en place des tests automatisés (PHPUnit)
-        </div>
-        <div class="comp-item">
-          <span>B2.6</span>
-          Déployer et maintenir une application (CI/CD)
-        </div>
-      </div>
     </div>
 
   </div>
 
   <footer>
-    <p>AHOUZI Ilyes — BTS SIO SLAM — 2026</p>
+    <span>AHOUZI Ilyes — BTS SIO SLAM — 2026</span>
+    <a href="index.html">← Retour au portfolio</a>
   </footer>
+
 </body>
 </html>
