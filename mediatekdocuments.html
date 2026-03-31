@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mediatekformation — AHOUZI Ilyes</title>
+  <title>MediatekDocuments — AHOUZI Ilyes</title>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -127,18 +127,18 @@
   <div class="hero">
     <div>
       <div class="hero-eyebrow">Atelier professionnel — E6</div>
-      <h1><em>Mediatek</em><br>formation</h1>
-      <p class="hero-desc">Application web de vidéos d'auto-formation développée avec Symfony 6.4. Ajout d'un back office d'administration sécurisé, de tests PHPUnit et déploiement avec CI/CD.</p>
+      <h1><em>Mediatek</em><br>Documents</h1>
+      <p class="hero-desc">Application de bureau C# exploitant une API REST PHP pour gérer les documents des vidéothèques MediaTek86. Gestion des commandes, authentification, sécurité, tests et déploiement.</p>
       <div class="hero-links">
-        <a href="https://ilyesahouzi.alwaysdata.net" target="_blank" class="btn-primary">Voir le site ↗</a>
-        <a href="https://github.com/flut0/mediatekformation" target="_blank" class="btn-secondary">GitHub ↗</a>
+        <a href="https://github.com/flut0/mediatekdocuments" target="_blank" class="btn-primary">Dépôt C# ↗</a>
+        <a href="https://github.com/flut0/rest_mediatekdocuments" target="_blank" class="btn-secondary">Dépôt API ↗</a>
       </div>
     </div>
     <div class="info-cards">
       <div class="info-card"><div class="ic-label">Cadre</div><div class="ic-value">BTS SIO E6</div></div>
-      <div class="info-card"><div class="ic-label">Période</div><div class="ic-value">Janv — Mars 2026</div></div>
-      <div class="info-card"><div class="ic-label">Framework</div><div class="ic-value">Symfony 6.4</div></div>
-      <div class="info-card"><div class="ic-label">Tests</div><div class="ic-value">16 / 16 ✓</div></div>
+      <div class="info-card"><div class="ic-label">Période</div><div class="ic-value">Février-Mars 2026</div></div>
+      <div class="info-card"><div class="ic-label">Langages</div><div class="ic-value">C# / PHP / MySQL</div></div>
+      <div class="info-card"><div class="ic-label">Missions</div><div class="ic-value">6 / 6 ✓</div></div>
     </div>
   </div>
 
@@ -146,19 +146,27 @@
     <div class="divider"></div>
 
     <div class="section-header"><span class="section-num">01</span><span class="section-title">Contexte</span></div>
-    <p class="context-text">Mediatekformation est une application web permettant d'accéder à des vidéos d'auto-formation proposées par une chaîne de médiathèques. Le projet d'origine ne comprenait qu'un front office basique. L'atelier consistait à améliorer et compléter l'application en 4 missions.</p>
-    <p class="context-text">Dépôt d'origine : <a href="https://github.com/CNED-SLAM/mediatekformation" target="_blank">github.com/CNED-SLAM/mediatekformation</a></p>
+    <p class="context-text">La société ITS 86 assure la gestion du parc informatique du réseau des médiathèques MediaTek86. Un premier développeur avait mis en place la base de données et les fonctionnalités de consultation des documents. Cet atelier consiste à faire évoluer l'application de bureau C# et l'API REST PHP associée.</p>
+    <p class="context-text">Le travail a été réalisé en solo. Les missions 1 et 3 étant optionnelles pour un développeur seul, elles n'ont pas été réalisées.</p>
+    <p class="context-text">Dépôt d'origine : <a href="https://github.com/CNED-SLAM/mediatekdocuments" target="_blank">github.com/CNED-SLAM/mediatekdocuments</a></p>
 
     <div class="divider"></div>
 
     <div class="section-header"><span class="section-num">02</span><span class="section-title">Langages & Technologies</span></div>
     <div class="tech-wrap">
-      <span class="tech-pill">PHP 8.2</span><span class="tech-pill">Symfony 6.4</span>
-      <span class="tech-pill">Twig</span><span class="tech-pill">Doctrine ORM</span>
-      <span class="tech-pill">MySQL</span><span class="tech-pill">PHPUnit</span>
-      <span class="tech-pill">Bootstrap 5</span><span class="tech-pill">Git / GitHub</span>
-      <span class="tech-pill">GitHub Actions</span><span class="tech-pill">Alwaysdata</span>
-      <span class="tech-pill">SonarLint</span><span class="tech-pill">Composer</span>
+      <span class="tech-pill">C#</span>
+      <span class="tech-pill">Visual Studio 2022</span>
+      <span class="tech-pill">PHP 8</span>
+      <span class="tech-pill">API REST</span>
+      <span class="tech-pill">MySQL</span>
+      <span class="tech-pill">Postman</span>
+      <span class="tech-pill">SonarQube for IDE</span>
+      <span class="tech-pill">GitHub</span>
+      <span class="tech-pill">Alwaysdata</span>
+      <span class="tech-pill">NLog</span>
+      <span class="tech-pill">Newtonsoft.Json</span>
+      <span class="tech-pill">WampServer</span>
+      <span class="tech-pill">NetBeans</span>
     </div>
 
     <div class="divider"></div>
@@ -166,47 +174,57 @@
     <div class="section-header"><span class="section-num">03</span><span class="section-title">Missions réalisées</span></div>
     <div class="missions-grid">
       <div class="mission-card">
-        <div class="mc-num">Mission 1</div>
-        <h3>Qualité du code</h3>
-        <p>Corrections SonarLint et ajout d'une fonctionnalité de comptage.</p>
-        <ul>
-          <li>Remplacement des chaînes littérales par des constantes</li>
-          <li>Correction des blocs manquants et conditions imbriquées</li>
-          <li>Accessibilité : attributs alt et summary</li>
-          <li>Colonne "nb formations" avec tri dans les playlists</li>
-        </ul>
-      </div>
-      <div class="mission-card">
         <div class="mc-num">Mission 2</div>
-        <h3>Back office admin</h3>
-        <p>Interface d'administration complète avec authentification sécurisée.</p>
+        <h3>Gestion des commandes</h3>
+        <p>Ajout de la gestion complète des commandes de documents.</p>
         <ul>
-          <li>CRUD formations, playlists, catégories</li>
-          <li>Authentification Symfony Security (ROLE_ADMIN)</li>
-          <li>Redirection automatique vers /login</li>
-          <li>Règles métier : suppression conditionnelle</li>
-        </ul>
-      </div>
-      <div class="mission-card">
-        <div class="mc-num">Mission 3</div>
-        <h3>Tests PHPUnit</h3>
-        <p>Suite de tests automatisés couvrant toutes les couches.</p>
-        <ul>
-          <li>Tests unitaires (entité Formation)</li>
-          <li>Tests de validation (contrainte date)</li>
-          <li>Tests d'intégration (Repository)</li>
-          <li>Tests fonctionnels (WebTestCase)</li>
-          <li>Résultat : OK (16 tests, 21 assertions)</li>
+          <li>Table Suivi + 4 étapes (en cours, relancée, livrée, réglée)</li>
+          <li>Onglets commandes livres et DVD</li>
+          <li>Trigger génération automatique des exemplaires</li>
+          <li>Onglet abonnements revues + alerte 30 jours</li>
         </ul>
       </div>
       <div class="mission-card">
         <div class="mc-num">Mission 4</div>
-        <h3>Déploiement & CI/CD</h3>
-        <p>Mise en production avec automatisation complète.</p>
+        <h3>Authentification</h3>
+        <p>Fenêtre de login au démarrage avec gestion des droits par service.</p>
         <ul>
-          <li>Déploiement sur Alwaysdata (SFTP + SSH)</li>
-          <li>Sauvegarde automatique BDD quotidienne à 02h00</li>
-          <li>GitHub Actions : déploiement continu sur push</li>
+          <li>Tables Utilisateur et Service dans la BDD</li>
+          <li>Administratif / Admin : accès complet</li>
+          <li>Prêts : consultation uniquement</li>
+          <li>Culture : accès refusé + fermeture</li>
+        </ul>
+      </div>
+      <div class="mission-card">
+        <div class="mc-num">Mission 5</div>
+        <h3>Sécurité & Qualité</h3>
+        <p>Corrections de sécurité, qualité de code et logs.</p>
+        <ul>
+          <li>Login:pwd déplacé dans App.config</li>
+          <li>Fichier .htaccess corrigé (erreur 400)</li>
+          <li>Nettoyage code SonarQube</li>
+          <li>Logs NLog dans la classe Access</li>
+        </ul>
+      </div>
+      <div class="mission-card">
+        <div class="mc-num">Mission 6</div>
+        <h3>Tests & Documentation</h3>
+        <p>Tests automatisés, documentations et vidéo.</p>
+        <ul>
+          <li>Tests unitaires C# (classes Model)</li>
+          <li>Collection de tests Postman (API REST)</li>
+          <li>Documentation technique C# et PHP</li>
+          <li>Vidéo de démonstration (10 min)</li>
+        </ul>
+      </div>
+      <div class="mission-card">
+        <div class="mc-num">Mission 7</div>
+        <h3>Déploiement</h3>
+        <p>Mise en production et sauvegardes automatiques.</p>
+        <ul>
+          <li>API et BDD déployées sur Alwaysdata</li>
+          <li>Installeur Windows créé et publié</li>
+          <li>Sauvegarde quotidienne automatique BDD</li>
         </ul>
       </div>
     </div>
@@ -215,27 +233,27 @@
 
     <div class="section-header"><span class="section-num">04</span><span class="section-title">Vidéo de démonstration</span></div>
     <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/7efUYRC1FKM" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/NFyH3U0gqEU" allowfullscreen></iframe>
     </div>
 
     <div class="divider"></div>
 
     <div class="section-header"><span class="section-num">05</span><span class="section-title">Liens</span></div>
     <div class="links-list">
-      <a href="https://ilyesahouzi.alwaysdata.net" target="_blank" class="link-row">
-        <div class="link-info"><strong>Site en ligne</strong><span>ilyesahouzi.alwaysdata.net</span></div>
+      <a href="https://github.com/flut0/mediatekdocuments" target="_blank" class="link-row">
+        <div class="link-info"><strong>Dépôt GitHub — Application C#</strong><span>github.com/flut0/mediatekdocuments</span></div>
         <span class="link-chevron">→</span>
       </a>
-      <a href="https://github.com/flut0/mediatekformation" target="_blank" class="link-row">
-        <div class="link-info"><strong>Dépôt GitHub</strong><span>github.com/flut0/mediatekformation</span></div>
+      <a href="https://github.com/flut0/rest_mediatekdocuments" target="_blank" class="link-row">
+        <div class="link-info"><strong>Dépôt GitHub — API REST PHP</strong><span>github.com/flut0/rest_mediatekdocuments</span></div>
         <span class="link-chevron">→</span>
       </a>
-      <a href="bilan_mediatekformation_v2.pdf" target="_blank" class="link-row">
-        <div class="link-info"><strong>Compte rendu PDF</strong><span>Dossier de compte rendu complet des 4 missions</span></div>
+      <a href="bilan_mediatekdocuments.pdf" target="_blank" class="link-row">
+        <div class="link-info"><strong>Compte rendu PDF</strong><span>Dossier de compte rendu complet des missions</span></div>
         <span class="link-chevron">→</span>
       </a>
-      <a href="https://github.com/CNED-SLAM/mediatekformation" target="_blank" class="link-row">
-        <div class="link-info"><strong>Dépôt d'origine</strong><span>github.com/CNED-SLAM/mediatekformation</span></div>
+      <a href="https://github.com/CNED-SLAM/mediatekdocuments" target="_blank" class="link-row">
+        <div class="link-info"><strong>Dépôt d'origine</strong><span>github.com/CNED-SLAM/mediatekdocuments</span></div>
         <span class="link-chevron">→</span>
       </a>
     </div>
@@ -249,25 +267,23 @@
         <div class="comp-grid">
           <div class="comp-item"><div class="ci-cat">Patrimoine informatique</div><div class="ci-text">Mettre en place et vérifier les niveaux d'habilitation associés à un service</div></div>
           <div class="comp-item"><div class="ci-cat">Patrimoine informatique</div><div class="ci-text">Gérer des sauvegardes (backup automatique quotidien de la BDD)</div></div>
-          <div class="comp-item"><div class="ci-cat">Assistance et évolution</div><div class="ci-text">Traiter des demandes concernant les applications</div></div>
-          <div class="comp-item"><div class="ci-cat">Présence en ligne</div><div class="ci-text">Participer à l'évolution d'un site Web exploitant les données de l'organisation</div></div>
-          <div class="comp-item"><div class="ci-cat">Mise à disposition</div><div class="ci-text">Déployer un service (mise en ligne sur Alwaysdata)</div></div>
+          <div class="comp-item"><div class="ci-cat">Mise à disposition</div><div class="ci-text">Déployer un service (API + installeur Windows)</div></div>
           <div class="comp-item"><div class="ci-cat">Mise à disposition</div><div class="ci-text">Réaliser les tests d'intégration et d'acceptation d'un service</div></div>
         </div>
       </div>
       <div>
         <div class="comp-bloc-title">Bloc 2 — Conception et développement d'applications</div>
         <div class="comp-grid">
-          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Exploiter les ressources du cadre applicatif (Symfony 6.4)</div></div>
-          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Identifier, développer, utiliser ou adapter des composants logiciels</div></div>
-          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Utiliser des composants d'accès aux données (Doctrine ORM)</div></div>
-          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Intégrer en continu les versions d'une solution applicative (GitHub Actions CI/CD)</div></div>
-          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Réaliser les tests nécessaires à la validation ou à la mise en production</div></div>
-          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Rédiger des documentations technique et d'utilisation (PHPDoc, README, PDF bilan)</div></div>
-          <div class="comp-item"><div class="ci-cat">Maintenance</div><div class="ci-text">Évaluer la qualité d'une solution applicative (SonarLint)</div></div>
-          <div class="comp-item"><div class="ci-cat">Maintenance</div><div class="ci-text">Analyser et corriger un dysfonctionnement</div></div>
-          <div class="comp-item"><div class="ci-cat">Gestion des données</div><div class="ci-text">Exploiter des données à l'aide d'un langage de requêtes (Doctrine DQL / SQL)</div></div>
-          <div class="comp-item"><div class="ci-cat">Gestion des données</div><div class="ci-text">Administrer et déployer une base de données (MySQL, phpMyAdmin, Alwaysdata)</div></div>
+          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Exploiter les ressources du cadre applicatif (C#, Visual Studio)</div></div>
+          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Identifier, développer et adapter des composants logiciels</div></div>
+          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Utiliser des composants d'accès aux données (API REST, Doctrine, MySQL)</div></div>
+          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Intégrer en continu les versions (GitHub, branches, pull requests)</div></div>
+          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Réaliser les tests (unitaires C#, fonctionnels Postman)</div></div>
+          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Rédiger des documentations technique et d'utilisation</div></div>
+          <div class="comp-item"><div class="ci-cat">Maintenance</div><div class="ci-text">Évaluer la qualité d'une solution applicative (SonarQube)</div></div>
+          <div class="comp-item"><div class="ci-cat">Maintenance</div><div class="ci-text">Analyser et corriger un dysfonctionnement (issues GitHub)</div></div>
+          <div class="comp-item"><div class="ci-cat">Gestion des données</div><div class="ci-text">Exploiter des données à l'aide d'un langage de requêtes (SQL, triggers)</div></div>
+          <div class="comp-item"><div class="ci-cat">Gestion des données</div><div class="ci-text">Administrer et déployer une base de données (MySQL, Alwaysdata)</div></div>
         </div>
       </div>
     </div>
