@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSM Football Club — AHOUZI Ilyes</title>
+  <title>Jungle Phone — AHOUZI Ilyes</title>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -140,16 +140,16 @@
 
   <div class="hero">
     <div>
-      <div class="hero-eyebrow">Stage 1re année — E5</div>
-      <h1><em>CSM</em><br>Football Club</h1>
-      <p class="hero-desc">Application web interne de gestion du staff d'un club de football amateur. Authentification sécurisée, gestion des licenciés, des équipes, des matchs et planning hebdomadaire des entraînements.</p>
+      <div class="hero-eyebrow">Stage 2e année — E5</div>
+      <h1><em>Jungle</em><br>Phone</h1>
+      <p class="hero-desc">Application web de gestion de stock et suivi SAV pour une boutique de téléphonie. Saisie des réparations par IMEI, suivi du statut en temps réel, gestion du stock avec alertes de rupture.</p>
       <div class="hero-links">
-    <a href="https://github.com/flut0/csm-football" target="_blank" class="btn-primary">GitHub ↗</a>
+        <a href="https://github.com/flut0" target="_blank" class="btn-primary">GitHub ↗</a>
       </div>
     </div>
     <div class="info-cards">
       <div class="info-card"><div class="ic-label">Cadre</div><div class="ic-value">BTS SIO E5</div></div>
-      <div class="info-card"><div class="ic-label">Période</div><div class="ic-value">1re année</div></div>
+      <div class="info-card"><div class="ic-label">Période</div><div class="ic-value">2e année</div></div>
       <div class="info-card"><div class="ic-label">Stack</div><div class="ic-value">PHP / MySQL</div></div>
       <div class="info-card"><div class="ic-label">Déploiement</div><div class="ic-value">Local / XAMPP</div></div>
     </div>
@@ -159,11 +159,10 @@
 
     <div class="section-header"><span class="section-num">01</span><span class="section-title">Contexte</span></div>
     <p class="context-text">
-      Le CSM Football Club est un club de football amateur basé en Île-de-France.
-      Le staff avait besoin d'un outil interne pour centraliser la gestion des licenciés,
-      des équipes et du calendrier des matchs. L'application remplace la gestion manuelle
-      sur papier ou tableur par une interface web sécurisée, accessible uniquement
-      au personnel autorisé du club.
+      Jungle Phone est une boutique de téléphonie qui avait besoin d'un outil interne
+      pour centraliser la gestion de son stock de produits et le suivi des réparations clients.
+      L'application permet d'enregistrer chaque appareil déposé en SAV via son numéro IMEI,
+      de décrire la panne, de suivre l'avancement de la réparation et d'alerter sur les ruptures de stock.
     </p>
 
     <div class="divider"></div>
@@ -185,14 +184,12 @@
 
     <div class="section-header"><span class="section-num">03</span><span class="section-title">Modèle de données</span></div>
     <div class="mcd-block">
-<span class="mcd-entity">equipe</span>(<span class="mcd-pk">id_equipe</span>, nom_equipe, categorie, saison)<br>
-<span class="mcd-entity">joueur</span>(<span class="mcd-pk">id_joueur</span>, nom, prenom, date_naissance, poste, num_licence, <span class="mcd-fk">#id_equipe</span>)<br>
-<span class="mcd-entity">match_foot</span>(<span class="mcd-pk">id_match</span>, date_match, heure, lieu, adversaire, score_domicile, score_exterieur, type_match, <span class="mcd-fk">#id_equipe</span>)<br>
-<span class="mcd-entity">entrainement</span>(<span class="mcd-pk">id_entrainement</span>, jour, heure_debut, heure_fin, lieu, <span class="mcd-fk">#id_equipe</span>)<br>
-<span class="mcd-entity">utilisateur</span>(<span class="mcd-pk">id_user</span>, login, mot_de_passe, role)<br>
-<span class="mcd-rel">— Un joueur appartient à une équipe (N,1)</span>
-<span class="mcd-rel">— Une équipe joue plusieurs matchs (1,N)</span>
-<span class="mcd-rel">— Une équipe a plusieurs entraînements (1,N)</span>
+<span class="mcd-entity">client</span>(<span class="mcd-pk">id_client</span>, nom, prenom, telephone, email)<br>
+<span class="mcd-entity">produit</span>(<span class="mcd-pk">id_produit</span>, nom, marque, reference, quantite, prix_achat, prix_vente)<br>
+<span class="mcd-entity">reparation</span>(<span class="mcd-pk">id_reparation</span>, imei, modele, marque, description_panne, statut, date_entree, date_sortie, prix, <span class="mcd-fk">#id_client</span>)<br>
+<span class="mcd-entity">utilisateur</span>(<span class="mcd-pk">id_user</span>, login, mot_de_passe)<br>
+<span class="mcd-rel">— Un client peut avoir plusieurs réparations (1,N)</span>
+<span class="mcd-rel">— Statuts SAV : Reçu → En cours → Réparé → Rendu</span>
     </div>
 
     <div class="divider"></div>
@@ -202,7 +199,7 @@
       <div class="mission-card">
         <div class="mc-num">Module 1</div>
         <h3>Authentification</h3>
-        <p>Accès sécurisé à l'application pour le staff du club.</p>
+        <p>Accès sécurisé à l'application pour le personnel de la boutique.</p>
         <ul>
           <li>Login avec sessions PHP</li>
           <li>Hachage des mots de passe (password_hash)</li>
@@ -212,35 +209,34 @@
       </div>
       <div class="mission-card">
         <div class="mc-num">Module 2</div>
-        <h3>Gestion des licenciés</h3>
-        <p>Suivi complet des joueurs affiliés au club.</p>
+        <h3>Gestion des clients</h3>
+        <p>Fichier client complet pour le suivi des réparations.</p>
         <ul>
-          <li>Liste complète des joueurs</li>
-          <li>Ajout avec affectation à une équipe</li>
-          <li>Suppression avec confirmation</li>
-          <li>Jointure SQL équipe / joueur</li>
+          <li>Ajout / suppression de clients</li>
+          <li>Nom, prénom, téléphone, email</li>
+          <li>Lien avec les fiches SAV</li>
         </ul>
       </div>
       <div class="mission-card">
         <div class="mc-num">Module 3</div>
-        <h3>Équipes & Matchs</h3>
-        <p>Gestion du calendrier et des résultats.</p>
+        <h3>Gestion du stock</h3>
+        <p>Suivi des produits en boutique avec alertes automatiques.</p>
         <ul>
-          <li>CRUD complet équipes</li>
-          <li>Saisie et suivi des matchs</li>
-          <li>Score domicile / extérieur</li>
-          <li>Filtrage par type (championnat, coupe, amical)</li>
+          <li>CRUD complet produits</li>
+          <li>Prix achat / prix vente</li>
+          <li>Alerte stock faible (≤ 3) en orange</li>
+          <li>Alerte rupture (= 0) en rouge</li>
         </ul>
       </div>
       <div class="mission-card">
         <div class="mc-num">Module 4</div>
-        <h3>Planning hebdomadaire</h3>
-        <p>Organisation et affichage des entraînements de la semaine.</p>
+        <h3>Suivi SAV</h3>
+        <p>Cœur de l'application — gestion complète des réparations.</p>
         <ul>
-          <li>Vue planning par jour de la semaine</li>
-          <li>Ajout / suppression d'entraînements</li>
-          <li>Impression du planning pour la salle du staff</li>
-          <li>CSS @media print pour rendu propre</li>
+          <li>Saisie IMEI, marque, modèle, panne</li>
+          <li>Suivi statut : Reçu → En cours → Réparé → Rendu</li>
+          <li>Date d'entrée et de sortie automatiques</li>
+          <li>Badge couleur selon statut</li>
         </ul>
       </div>
     </div>
@@ -256,8 +252,8 @@
 
     <div class="section-header"><span class="section-num">06</span><span class="section-title">Liens</span></div>
     <div class="links-list">
-      <a href="https://github.com/flut0/csm-football" target="_blank" class="link-row">
-       <div class="link-info"><strong>Dépôt GitHub</strong><span>github.com/flut0/csm-football</span></div>
+      <a href="https://github.com/flut0" target="_blank" class="link-row">
+        <div class="link-info"><strong>Dépôt GitHub</strong><span>github.com/flut0</span></div>
         <span class="link-chevron">→</span>
       </a>
     </div>
@@ -270,18 +266,18 @@
         <div class="comp-bloc-title">Bloc 1 — Services informatiques aux organisations</div>
         <div class="comp-grid">
           <div class="comp-item"><div class="ci-cat">Patrimoine informatique</div><div class="ci-text">Concevoir et administrer une base de données MySQL (MCD, MLD, création des tables)</div></div>
-          <div class="comp-item"><div class="ci-cat">Assistance et évolution</div><div class="ci-text">Répondre aux besoins du client — recueil des besoins du staff et développement d'une solution adaptée</div></div>
+          <div class="comp-item"><div class="ci-cat">Assistance et évolution</div><div class="ci-text">Répondre aux besoins du client — recueil des besoins de la boutique et développement d'une solution adaptée</div></div>
           <div class="comp-item"><div class="ci-cat">Mise à disposition</div><div class="ci-text">Déployer un service — mise en place de l'environnement local avec XAMPP</div></div>
-          <div class="comp-item"><div class="ci-cat">Mise à disposition</div><div class="ci-text">Tester les éléments développés — tests manuels de chaque fonctionnalité (CRUD, authentification, planning)</div></div>
+          <div class="comp-item"><div class="ci-cat">Mise à disposition</div><div class="ci-text">Tester les éléments développés — tests manuels de chaque fonctionnalité (CRUD, SAV, alertes stock)</div></div>
         </div>
       </div>
       <div>
         <div class="comp-bloc-title">Bloc 2 — Conception et développement d'applications</div>
         <div class="comp-grid">
-          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Concevoir et développer une solution applicative — MCD, MLD, application PHP complète from scratch</div></div>
+          <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Concevoir et développer une solution applicative métier — MCD, MLD, application PHP complète from scratch</div></div>
           <div class="comp-item"><div class="ci-cat">Conception applicative</div><div class="ci-text">Identifier et développer des composants logiciels — pages PHP modulaires avec inclusion (connexion, session)</div></div>
-          <div class="comp-item"><div class="ci-cat">Maintenance</div><div class="ci-text">Assurer la maintenance — CRUD complet sur toutes les entités (joueurs, équipes, matchs, entraînements)</div></div>
-          <div class="comp-item"><div class="ci-cat">Gestion des données</div><div class="ci-text">Exploiter des données via un langage de requêtes — SELECT, INSERT, DELETE, JOIN avec PDO</div></div>
+          <div class="comp-item"><div class="ci-cat">Maintenance</div><div class="ci-text">Assurer la maintenance — CRUD complet sur toutes les entités (clients, produits, réparations)</div></div>
+          <div class="comp-item"><div class="ci-cat">Gestion des données</div><div class="ci-text">Exploiter des données via un langage de requêtes — SELECT, INSERT, UPDATE, DELETE, JOIN avec PDO</div></div>
           <div class="comp-item"><div class="ci-cat">Gestion des données</div><div class="ci-text">Sécuriser les accès aux données — requêtes préparées PDO, protection contre les injections SQL</div></div>
           <div class="comp-item"><div class="ci-cat">Sécurité</div><div class="ci-text">Sécuriser une application web — hachage des mots de passe (password_hash), gestion des sessions PHP</div></div>
         </div>
