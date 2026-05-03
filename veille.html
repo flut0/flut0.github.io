@@ -77,6 +77,17 @@
     .newsletter-label { font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
     .newsletter-title { font-family: 'Crimson Pro', serif; font-size: 1.4rem; font-weight: 600; color: var(--text); }
     .newsletter-date { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+
+    .feed-tabs { display: flex; gap: 1px; background: var(--border); margin-bottom: 2rem; }
+    .feed-tab {
+      flex: 1; padding: 0.7rem 1rem; background: var(--surface);
+      border: none; color: var(--muted); font-size: 0.78rem;
+      font-family: 'DM Sans', sans-serif; cursor: pointer;
+      transition: background 0.2s, color 0.2s; text-align: center;
+    }
+    .feed-tab:hover { background: var(--surface2); color: var(--text); }
+    .feed-tab.active { background: var(--surface2); color: var(--accent); }
+
     .btn-refresh {
       display: flex; align-items: center; gap: 0.5rem;
       padding: 0.7rem 1.4rem; background: transparent;
@@ -93,17 +104,20 @@
     .article-meta { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; }
     .article-num { font-size: 0.65rem; color: var(--muted); font-family: monospace; }
     .article-tag { font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; padding: 0.2rem 0.5rem; border: 1px solid var(--border); color: var(--accent); }
+    .article-date { font-size: 0.72rem; color: var(--muted); }
     .article-title { font-family: 'Crimson Pro', serif; font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; line-height: 1.4; }
     .article-summary { font-size: 0.87rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.8rem; }
     .article-source { font-size: 0.78rem; color: var(--muted); }
     .article-source span { color: var(--accent); }
+    .article-link { color: var(--accent); text-decoration: none; }
+    .article-link:hover { text-decoration: underline; }
 
     .loading-state { padding: 2.5rem; text-align: center; color: var(--muted); font-size: 0.9rem; }
     .loading-dot { display: inline-block; animation: blink 1.2s infinite; }
     .loading-dot:nth-child(2) { animation-delay: 0.2s; }
     .loading-dot:nth-child(3) { animation-delay: 0.4s; }
     @keyframes blink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
-    .error-state { padding: 2rem; text-align: center; color: #e05a3a; font-size: 0.88rem; }
+    .error-state { padding: 2rem; text-align: center; color: #e05a3a; font-size: 0.88rem; line-height: 1.7; }
 
     footer { border-top: 1px solid var(--border); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 0.82rem; }
     footer a { color: var(--accent); text-decoration: none; }
@@ -113,6 +127,7 @@
       .hero, .content { padding-left: 1.5rem; padding-right: 1.5rem; }
       .hero { padding-top: 7rem; }
       .analyse-grid { grid-template-columns: 1fr; }
+      .feed-tabs { flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -135,18 +150,12 @@
   </div>
 
   <div class="content">
-    <div class="divider"></div>
 
-    <div class="section-header"><span class="section-num">01</span><span class="section-title">Analyse de la situation</span></div>
+    <div class="section-header"><span class="section-num">01</span><span class="section-title">Analyse</span></div>
     <div class="analyse-grid">
       <div class="analyse-cell">
-        <h3>Ce qui a changé</h3>
-        <p>En quelques années, les outils IA ont envahi le quotidien des développeurs. GitHub Copilot (2021), ChatGPT (2022), puis des IDE entiers comme Cursor ont radicalement changé la façon dont on code. L'IA peut aujourd'hui générer des fonctions, corriger des bugs, écrire des tests et expliquer du code legacy.</p>
-      </div>
-      <div class="analyse-cell">
-        <h3>Les chiffres clés</h3>
+        <h3>Chiffres clés</h3>
         <ul>
-          <li>GitHub Copilot utilisé par plus de 1,3 million de développeurs (2024)</li>
           <li>55% du code généré sur GitHub implique une assistance IA</li>
           <li>Les développeurs utilisant Copilot codent 55% plus vite selon GitHub</li>
           <li>Le marché des outils IA pour développeurs devrait atteindre 30 Md$ en 2030</li>
@@ -172,6 +181,15 @@
           <li>Assumer la responsabilité des choix techniques</li>
         </ul>
       </div>
+      <div class="analyse-cell">
+        <h3>Les outils suivis</h3>
+        <ul>
+          <li>GitHub Copilot — assistant de code intégré à VS Code</li>
+          <li>ChatGPT / Claude — génération et explication de code</li>
+          <li>Cursor — IDE intégrant l'IA nativement</li>
+          <li>Tabnine — auto-complétion IA pour tous les IDE</li>
+        </ul>
+      </div>
     </div>
 
     <div class="verdict-block">
@@ -193,22 +211,31 @@
 
     <div class="divider"></div>
 
-    <div class="section-header"><span class="section-num">03</span><span class="section-title">Newsletter — Actu du jour</span></div>
+    <div class="section-header"><span class="section-num">03</span><span class="section-title">Actualités en direct</span></div>
     <div class="newsletter-section">
       <div class="newsletter-header">
         <div>
-          <div class="newsletter-label">Actualité en temps réel</div>
+          <div class="newsletter-label">Flux RSS — Actu du jour</div>
           <div class="newsletter-title">IA & Développement</div>
           <div class="newsletter-date" id="newsletter-date"></div>
         </div>
-        <button class="btn-refresh" id="btn-refresh" onclick="loadArticles()">
+        <button class="btn-refresh" id="btn-refresh" onclick="loadFeed(currentFeed, true)">
           <span id="refresh-icon">↻</span> Actualiser
         </button>
       </div>
+
+      <div class="feed-tabs" id="feed-tabs">
+        <button class="feed-tab active" onclick="switchFeed(0)">GitHub Blog</button>
+        <button class="feed-tab" onclick="switchFeed(1)">Stack Overflow</button>
+        <button class="feed-tab" onclick="switchFeed(2)">Le Monde IA</button>
+        <button class="feed-tab" onclick="switchFeed(3)">Journal du Net</button>
+      </div>
+
       <div id="articles-container">
         <div class="loading-state">Chargement des articles<span class="loading-dot">.</span><span class="loading-dot">.</span><span class="loading-dot">.</span></div>
       </div>
     </div>
+
   </div>
 
   <footer>
@@ -221,62 +248,94 @@
     document.getElementById('newsletter-date').textContent =
       today.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
-    const todayStr = today.toISOString().split('T')[0];
-    const CACHE_KEY = 'veille_articles_v2';
-    const CACHE_DATE_KEY = 'veille_articles_date_v2';
+    const FEEDS = [
+      { name: 'GitHub Blog', url: 'https://github.blog/feed/', tag: 'Outils' },
+      { name: 'Stack Overflow', url: 'https://stackoverflow.blog/feed/', tag: 'Communauté' },
+      { name: 'Le Monde IA', url: 'https://www.lemonde.fr/intelligence-artificielle/rss_full.xml', tag: 'Presse' },
+      { name: 'Journal du Net', url: 'https://www.journaldunet.com/rss/', tag: 'Tech' },
+    ];
 
-    async function loadArticles() {
+    const API = 'https://api.rss2json.com/v1/api.json?rss_url=';
+    let currentFeed = 0;
+    let cache = {};
+
+    function switchFeed(index) {
+      currentFeed = index;
+      document.querySelectorAll('.feed-tab').forEach((t, i) => {
+        t.classList.toggle('active', i === index);
+      });
+      loadFeed(index, false);
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      const d = new Date(dateStr);
+      return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    function stripHtml(html) {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    async function loadFeed(index, forceRefresh) {
+      const feed = FEEDS[index];
       const btn = document.getElementById('btn-refresh');
       const container = document.getElementById('articles-container');
-      const cached = localStorage.getItem(CACHE_KEY);
-      const cachedDate = localStorage.getItem(CACHE_DATE_KEY);
-      if (cached && cachedDate === todayStr) { renderArticles(JSON.parse(cached)); return; }
+
+      if (cache[index] && !forceRefresh) {
+        renderArticles(cache[index], feed.tag);
+        return;
+      }
 
       btn.disabled = true;
       document.getElementById('refresh-icon').textContent = '⏳';
-      container.innerHTML = `<div class="loading-state">Recherche des derniers articles<span class="loading-dot">.</span><span class="loading-dot">.</span><span class="loading-dot">.</span></div>`;
+      container.innerHTML = `<div class="loading-state">Chargement des articles<span class="loading-dot">.</span><span class="loading-dot">.</span><span class="loading-dot">.</span></div>`;
 
       try {
-        const response = await fetch('https://api.anthropic.com/v1/messages', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model: 'claude-sonnet-4-20250514',
-            max_tokens: 1000,
-            tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-            system: `Tu es un assistant de veille technologique sur le sujet "IA et impact sur le métier de développeur logiciel".
-Recherche 3 articles récents (moins de 7 jours) et retourne UNIQUEMENT ce JSON sans texte avant ni après :
-{"articles":[{"titre":"...","resume":"2-3 phrases en français","source":"Nom du média","tag":"Emploi ou Outils ou Recherche ou Entreprise ou Formation","url":"URL ou null"}]}`,
-            messages: [{ role: 'user', content: `Recherche 3 articles récents sur l'IA et les développeurs. Date : ${todayStr}. JSON uniquement.` }]
-          })
-        });
-        const data = await response.json();
-        let txt = data.content.filter(b => b.type === 'text').map(b => b.text).join('');
-        txt = txt.replace(/```json?/g, '').replace(/```/g, '').trim();
-        const parsed = JSON.parse(txt);
-        localStorage.setItem(CACHE_KEY, JSON.stringify(parsed.articles));
-        localStorage.setItem(CACHE_DATE_KEY, todayStr);
-        renderArticles(parsed.articles);
+        const res = await fetch(`${API}${encodeURIComponent(feed.url)}&count=5`);
+        const data = await res.json();
+
+        if (data.status !== 'ok' || !data.items || data.items.length === 0) {
+          throw new Error('Aucun article trouvé pour ce flux.');
+        }
+
+        cache[index] = data.items;
+        renderArticles(data.items, feed.tag);
       } catch (err) {
-        container.innerHTML = `<div class="error-state">Impossible de charger les articles.<br><small>${err.message}</small></div>`;
+        container.innerHTML = `<div class="error-state">
+          Impossible de charger ce flux pour l'instant.<br>
+          <small style="color:var(--muted)">Essayez un autre onglet ou revenez plus tard.</small>
+        </div>`;
       } finally {
         btn.disabled = false;
         document.getElementById('refresh-icon').textContent = '↻';
       }
     }
 
-    function renderArticles(articles) {
-      document.getElementById('articles-container').innerHTML =
-        `<div class="articles-grid">${articles.map((a, i) => `
+    function renderArticles(items, tag) {
+      const container = document.getElementById('articles-container');
+      container.innerHTML = `<div class="articles-grid">${items.slice(0, 5).map((item, i) => {
+        const summary = stripHtml(item.description || item.content || '').slice(0, 200);
+        return `
           <div class="article-card">
-            <div class="article-meta"><span class="article-num">0${i+1}</span><span class="article-tag">${a.tag}</span></div>
-            <div class="article-title">${a.titre}</div>
-            <div class="article-summary">${a.resume}</div>
-            <div class="article-source">Source : <span>${a.source}</span>${a.url ? ` — <a href="${a.url}" target="_blank" style="color:var(--accent);text-decoration:none;">Lire →</a>` : ''}</div>
-          </div>`).join('')}</div>`;
+            <div class="article-meta">
+              <span class="article-num">0${i + 1}</span>
+              <span class="article-tag">${tag}</span>
+              <span class="article-date">${formatDate(item.pubDate)}</span>
+            </div>
+            <div class="article-title">${item.title}</div>
+            ${summary ? `<div class="article-summary">${summary}...</div>` : ''}
+            <div class="article-source">
+              Source : <span>${item.author || FEEDS[currentFeed].name}</span>
+              ${item.link ? ` — <a href="${item.link}" target="_blank" class="article-link">Lire l'article →</a>` : ''}
+            </div>
+          </div>`;
+      }).join('')}</div>`;
     }
 
-    loadArticles();
+    loadFeed(0, false);
   </script>
 </body>
 </html>
