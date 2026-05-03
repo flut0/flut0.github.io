@@ -248,14 +248,14 @@
     document.getElementById('newsletter-date').textContent =
       today.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
-    const FEEDS = [
-      { name: 'GitHub Blog', url: 'https://github.blog/feed/', tag: 'Outils' },
-      { name: 'Stack Overflow', url: 'https://stackoverflow.blog/feed/', tag: 'Communauté' },
-      { name: 'Le Monde IA', url: 'https://www.lemonde.fr/intelligence-artificielle/rss_full.xml', tag: 'Presse' },
-      { name: 'Journal du Net', url: 'https://www.journaldunet.com/rss/', tag: 'Tech' },
-    ];
+const FEEDS = [
+  { name: 'GitHub Blog', url: 'https://github.blog/feed/', tag: 'Outils' },
+  { name: 'Stack Overflow', url: 'https://stackoverflow.blog/feed/', tag: 'Communauté' },
+  { name: 'Le Monde IA', url: 'https://www.lemonde.fr/intelligence-artificielle/rss_full.xml', tag: 'Presse' },
+  { name: 'Journal du Net', url: 'https://www.journaldunet.com/rss/', tag: 'Tech' },
+];
 
-    const API = 'https://api.rss2json.com/v1/api.json?rss_url=';
+const API = 'https://api.rss2json.com/v1/api.json?api_key=ywnhaw4suvfmtbpzj1c3pj5gfl9zwk85nek7hzuk&rss_url=';
     let currentFeed = 0;
     let cache = {};
 
